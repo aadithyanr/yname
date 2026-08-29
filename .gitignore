@@ -1,0 +1,12 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+data/yc_companies.json
+
+web/node_modules/
+web/dist/
+web/.vercel/
+web/*.tsbuildinfo
+web/vite.config.js
+web/vite.config.d.ts
