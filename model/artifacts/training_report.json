@@ -1,0 +1,1234 @@
+{
+  "seed": 20260830,
+  "cleaning": {
+    "source_records": 6194,
+    "usable_unique_names": 6090,
+    "duplicate_rows_removed_after_cleaning": 103,
+    "names_changed_by_cleaning": 150,
+    "rows_dropped": 1,
+    "duplicate_names_with_conflicting_categories": 58
+  },
+  "split_names": {
+    "train": 4874,
+    "validation": 608,
+    "test": 608
+  },
+  "examples": {
+    "train": 45958,
+    "validation": 5731,
+    "test": 5793
+  },
+  "vocabulary": [
+    "<START>",
+    "<END>",
+    " ",
+    "&",
+    "'",
+    "-",
+    ".",
+    "/",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z"
+  ],
+  "categories": [
+    "B2B",
+    "Consumer",
+    "Education",
+    "Fintech",
+    "Healthcare",
+    "Industrials",
+    "Other",
+    "Real Estate and Construction"
+  ],
+  "config": {
+    "data": "data/yc_companies.json",
+    "output_dir": "model/artifacts",
+    "steps": 3500,
+    "batch_size": 384,
+    "eval_every": 250,
+    "patience": 5,
+    "learning_rate": 0.004,
+    "weight_decay": 1e-05,
+    "context_size": 10,
+    "embedding_size": 24,
+    "hidden_size": 160,
+    "category_embedding_size": 12,
+    "seed": 20260830
+  },
+  "models": {
+    "plain": {
+      "parameter_count": 46700,
+      "architecture": {
+        "context_size": 10,
+        "embedding_size": 24,
+        "hidden_size": 160,
+        "category_embedding_size": 0,
+        "category_count": 8,
+        "vocab_size": 44,
+        "conditional": false
+      },
+      "best_step": 1000,
+      "train_loss": 2.180470181121554,
+      "validation_loss": 2.3835107566715017,
+      "test_loss": 2.378982530775289,
+      "test_perplexity": 10.793914798748244,
+      "history": [
+        {
+          "step": 1,
+          "batch_loss": 3.782214879989624,
+          "validation_loss": 3.7418802687685395,
+          "elapsed_seconds": 0.009886666986858472
+        },
+        {
+          "step": 250,
+          "batch_loss": 2.41239333152771,
+          "validation_loss": 2.533262509406081,
+          "elapsed_seconds": 0.2395538329728879
+        },
+        {
+          "step": 500,
+          "batch_loss": 2.4103057384490967,
+          "validation_loss": 2.448683523545193,
+          "elapsed_seconds": 0.4450003749807365
+        },
+        {
+          "step": 750,
+          "batch_loss": 2.217808485031128,
+          "validation_loss": 2.4083789778180074,
+          "elapsed_seconds": 0.643175249977503
+        },
+        {
+          "step": 1000,
+          "batch_loss": 2.0893025398254395,
+          "validation_loss": 2.3835107566715017,
+          "elapsed_seconds": 0.8420539169746917
+        },
+        {
+          "step": 1250,
+          "batch_loss": 1.9986977577209473,
+          "validation_loss": 2.4049895936709342,
+          "elapsed_seconds": 1.0410695419996046
+        },
+        {
+          "step": 1500,
+          "batch_loss": 1.9625202417373657,
+          "validation_loss": 2.412838601874673,
+          "elapsed_seconds": 1.3614965829765424
+        },
+        {
+          "step": 1750,
+          "batch_loss": 1.9543617963790894,
+          "validation_loss": 2.4370044767492582,
+          "elapsed_seconds": 1.6360589579853695
+        },
+        {
+          "step": 2000,
+          "batch_loss": 1.8882580995559692,
+          "validation_loss": 2.478092266156648,
+          "elapsed_seconds": 2.045990416983841
+        },
+        {
+          "step": 2250,
+          "batch_loss": 1.9318760633468628,
+          "validation_loss": 2.5101723698416505,
+          "elapsed_seconds": 2.2659612499992363
+        }
+      ],
+      "samples": {
+        "Any": [
+          {
+            "name": "commeting",
+            "score": -1.4692646516855126,
+            "model_log_probability": -1.4512646516855126,
+            "nearest_known_name": "cymmetria",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.72
+          },
+          {
+            "name": "mender",
+            "score": -1.5001299272884305,
+            "model_log_probability": -1.4641299272884305,
+            "nearest_known_name": "mendel",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.84
+          },
+          {
+            "name": "instersebio",
+            "score": -1.5325207846910398,
+            "model_log_probability": -1.4785207846910398,
+            "nearest_known_name": "interstate",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.72
+          },
+          {
+            "name": "pentence",
+            "score": -1.5382712517721981,
+            "model_log_probability": -1.5382712517721981,
+            "nearest_known_name": "opensteer",
+            "nearest_known_similarity": 0.7058823529411765,
+            "temperature": 0.72
+          },
+          {
+            "name": "coperal",
+            "score": -1.5163045686839665,
+            "model_log_probability": -1.4983045686839664,
+            "nearest_known_name": "covera",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.84
+          },
+          {
+            "name": "sentrive",
+            "score": -1.5764683485971904,
+            "model_log_probability": -1.5764683485971904,
+            "nearest_known_name": "sentrial",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.96
+          },
+          {
+            "name": "trebous",
+            "score": -1.620498667521998,
+            "model_log_probability": -1.6024986675219979,
+            "nearest_known_name": "trebol",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          },
+          {
+            "name": "mind ai",
+            "score": -1.620108717938098,
+            "model_log_probability": -1.2621087179380979,
+            "nearest_known_name": "mindfi",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.96
+          },
+          {
+            "name": "nopernase",
+            "score": -1.6193520936753854,
+            "model_log_probability": -1.6013520936753853,
+            "nearest_known_name": "openbase",
+            "nearest_known_similarity": 0.8235294117647058,
+            "temperature": 0.72
+          },
+          {
+            "name": "cundre",
+            "score": -1.6485549076288502,
+            "model_log_probability": -1.6125549076288501,
+            "nearest_known_name": "cue",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.84
+          },
+          {
+            "name": "findecond",
+            "score": -1.6516989261989672,
+            "model_log_probability": -1.6336989261989672,
+            "nearest_known_name": "minded",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.96
+          },
+          {
+            "name": "coutze robotics",
+            "score": -1.6409720255859315,
+            "model_log_probability": -1.1749720255859315,
+            "nearest_known_name": "double robotics",
+            "nearest_known_similarity": 0.7857142857142857,
+            "temperature": 0.96
+          },
+          {
+            "name": "menterch",
+            "score": -1.6062121866354861,
+            "model_log_probability": -1.6062121866354861,
+            "nearest_known_name": "meteoric",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.72
+          },
+          {
+            "name": "trandet",
+            "score": -1.635412521327161,
+            "model_log_probability": -1.617412521327161,
+            "nearest_known_name": "trade",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.72
+          },
+          {
+            "name": "pasentra",
+            "score": -1.6285305182525676,
+            "model_log_probability": -1.6285305182525676,
+            "nearest_known_name": "panta",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.84
+          },
+          {
+            "name": "seneriant",
+            "score": -1.6352179834978604,
+            "model_log_probability": -1.6172179834978604,
+            "nearest_known_name": "envariant",
+            "nearest_known_similarity": 0.7777777777777778,
+            "temperature": 0.72
+          },
+          {
+            "name": "dreambai",
+            "score": -1.665949682816195,
+            "model_log_probability": -1.665949682816195,
+            "nearest_known_name": "dream",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          },
+          {
+            "name": "signamedics",
+            "score": -1.6712375391940382,
+            "model_log_probability": -1.6172375391940381,
+            "nearest_known_name": "sigma genetics",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.72
+          },
+          {
+            "name": "intrance",
+            "score": -1.6501125607388774,
+            "model_log_probability": -1.6501125607388774,
+            "nearest_known_name": "interface",
+            "nearest_known_similarity": 0.8235294117647058,
+            "temperature": 0.96
+          },
+          {
+            "name": "drebon",
+            "score": -1.6644517137044528,
+            "model_log_probability": -1.6284517137044527,
+            "nearest_known_name": "den",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.84
+          },
+          {
+            "name": "converch",
+            "score": -1.6501587008667988,
+            "model_log_probability": -1.6501587008667988,
+            "nearest_known_name": "cover",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          },
+          {
+            "name": "coservel theraper",
+            "score": -1.679725719911655,
+            "model_log_probability": -1.4577257199116551,
+            "nearest_known_name": "corvera",
+            "nearest_known_similarity": 0.6086956521739131,
+            "temperature": 0.72
+          },
+          {
+            "name": "striam",
+            "score": -1.7040017931923674,
+            "model_log_probability": -1.6680017931923674,
+            "nearest_known_name": "stream",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.84
+          },
+          {
+            "name": "kend bioscience",
+            "score": -1.68736580514033,
+            "model_log_probability": -1.22136580514033,
+            "nearest_known_name": "pando bioscience",
+            "nearest_known_similarity": 0.8275862068965517,
+            "temperature": 0.72
+          }
+        ]
+      }
+    },
+    "conditional": {
+      "parameter_count": 49068,
+      "architecture": {
+        "context_size": 10,
+        "embedding_size": 24,
+        "hidden_size": 160,
+        "category_embedding_size": 12,
+        "category_count": 8,
+        "vocab_size": 44,
+        "conditional": true
+      },
+      "best_step": 1000,
+      "train_loss": 2.160317283048347,
+      "validation_loss": 2.395608476310308,
+      "test_loss": 2.38054649738909,
+      "test_perplexity": 10.810809328922616,
+      "history": [
+        {
+          "step": 1,
+          "batch_loss": 3.785578727722168,
+          "validation_loss": 3.740773265055182,
+          "elapsed_seconds": 0.006193165987497196
+        },
+        {
+          "step": 250,
+          "batch_loss": 2.5335025787353516,
+          "validation_loss": 2.5141680798508115,
+          "elapsed_seconds": 0.2774663750024047
+        },
+        {
+          "step": 500,
+          "batch_loss": 2.415797472000122,
+          "validation_loss": 2.4619862269073898,
+          "elapsed_seconds": 0.5587319159822073
+        },
+        {
+          "step": 750,
+          "batch_loss": 2.1286725997924805,
+          "validation_loss": 2.417840694386887,
+          "elapsed_seconds": 0.8935137499938719
+        },
+        {
+          "step": 1000,
+          "batch_loss": 2.0175793170928955,
+          "validation_loss": 2.395608476310308,
+          "elapsed_seconds": 1.1636098329909146
+        },
+        {
+          "step": 1250,
+          "batch_loss": 1.956856369972229,
+          "validation_loss": 2.406378183413126,
+          "elapsed_seconds": 1.4238230409973767
+        },
+        {
+          "step": 1500,
+          "batch_loss": 1.866794228553772,
+          "validation_loss": 2.4406034103177894,
+          "elapsed_seconds": 1.6876156659855042
+        },
+        {
+          "step": 1750,
+          "batch_loss": 1.6970386505126953,
+          "validation_loss": 2.4809422490484865,
+          "elapsed_seconds": 1.9783249159809202
+        },
+        {
+          "step": 2000,
+          "batch_loss": 1.7278395891189575,
+          "validation_loss": 2.5128328253140815,
+          "elapsed_seconds": 2.3998574999859557
+        },
+        {
+          "step": 2250,
+          "batch_loss": 1.6120144128799438,
+          "validation_loss": 2.5724364510174924,
+          "elapsed_seconds": 2.762535999994725
+        }
+      ],
+      "samples": {
+        "B2B": [
+          {
+            "name": "codera",
+            "score": -1.3088533504157012,
+            "model_log_probability": -1.2728533504157011,
+            "nearest_known_name": "covera",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.72
+          },
+          {
+            "name": "flowaflow",
+            "score": -1.407900622960838,
+            "model_log_probability": -1.389900622960838,
+            "nearest_known_name": "novaflow",
+            "nearest_known_similarity": 0.7058823529411765,
+            "temperature": 0.72
+          },
+          {
+            "name": "spackitt",
+            "score": -1.4651434991983494,
+            "model_log_probability": -1.4651434991983494,
+            "nearest_known_name": "sparkgift",
+            "nearest_known_similarity": 0.7058823529411765,
+            "temperature": 0.96
+          },
+          {
+            "name": "archardets",
+            "score": -1.5644088303203996,
+            "model_log_probability": -1.5284088303203995,
+            "nearest_known_name": "chart",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.96
+          },
+          {
+            "name": "sharblet",
+            "score": -1.5308146961423281,
+            "model_log_probability": -1.5308146961423281,
+            "nearest_known_name": "sable",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.84
+          },
+          {
+            "name": "comprade",
+            "score": -1.541256674843715,
+            "model_log_probability": -1.541256674843715,
+            "nearest_known_name": "comradery",
+            "nearest_known_similarity": 0.8235294117647058,
+            "temperature": 0.84
+          },
+          {
+            "name": "calvera",
+            "score": -1.531430713321353,
+            "model_log_probability": -1.513430713321353,
+            "nearest_known_name": "clever",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          },
+          {
+            "name": "flight",
+            "score": -1.5940028874560286,
+            "model_log_probability": -1.5580028874560286,
+            "nearest_known_name": "preflight",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.72
+          },
+          {
+            "name": "instara",
+            "score": -1.604445880231339,
+            "model_log_probability": -1.586445880231339,
+            "nearest_known_name": "instalab",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.72
+          },
+          {
+            "name": "airstite",
+            "score": -1.6352442838383707,
+            "model_log_probability": -1.6352442838383707,
+            "nearest_known_name": "artie",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.84
+          },
+          {
+            "name": "prondusting",
+            "score": -1.6700768348213975,
+            "model_log_probability": -1.6160768348213974,
+            "nearest_known_name": "routine",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.72
+          },
+          {
+            "name": "landwork",
+            "score": -1.7021160108383722,
+            "model_log_probability": -1.7021160108383722,
+            "nearest_known_name": "langdock",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.72
+          }
+        ],
+        "Consumer": [
+          {
+            "name": "spackit",
+            "score": -1.3564955557636817,
+            "model_log_probability": -1.3384955557636817,
+            "nearest_known_name": "sparkgift",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.96
+          },
+          {
+            "name": "codero",
+            "score": -1.4815859131195035,
+            "model_log_probability": -1.4455859131195035,
+            "nearest_known_name": "cero",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.84
+          },
+          {
+            "name": "hopplater",
+            "score": -1.5072005457794546,
+            "model_log_probability": -1.4892005457794546,
+            "nearest_known_name": "hotplate",
+            "nearest_known_similarity": 0.8235294117647058,
+            "temperature": 0.72
+          },
+          {
+            "name": "flowdy",
+            "score": -1.6081857497270076,
+            "model_log_probability": -1.5721857497270075,
+            "nearest_known_name": "flowly",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.72
+          },
+          {
+            "name": "clavera",
+            "score": -1.5920544827222953,
+            "model_log_probability": -1.5740544827222953,
+            "nearest_known_name": "clara",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.72
+          },
+          {
+            "name": "packan",
+            "score": -1.5840531204304344,
+            "model_log_probability": -1.5480531204304344,
+            "nearest_known_name": "alpaca",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.96
+          },
+          {
+            "name": "shippi",
+            "score": -1.654372858209564,
+            "model_log_probability": -1.618372858209564,
+            "nearest_known_name": "shipper",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          },
+          {
+            "name": "pockant",
+            "score": -1.6215062360688453,
+            "model_log_probability": -1.6035062360688452,
+            "nearest_known_name": "pocket",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          },
+          {
+            "name": "clowdrout",
+            "score": -1.6768555569710117,
+            "model_log_probability": -1.6588555569710117,
+            "nearest_known_name": "clodo",
+            "nearest_known_similarity": 0.7142857142857143,
+            "temperature": 0.72
+          },
+          {
+            "name": "codeto",
+            "score": -1.5604205573142385,
+            "model_log_probability": -1.5244205573142384,
+            "nearest_known_name": "codestory",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.84
+          },
+          {
+            "name": "hiffoct",
+            "score": -1.70196066552202,
+            "model_log_probability": -1.68396066552202,
+            "nearest_known_name": "giveffect",
+            "nearest_known_similarity": 0.625,
+            "temperature": 0.96
+          },
+          {
+            "name": "spockitus",
+            "score": -1.6603384644135244,
+            "model_log_probability": -1.6423384644135244,
+            "nearest_known_name": "pocket",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.72
+          }
+        ],
+        "Education": [
+          {
+            "name": "codestove",
+            "score": -1.2212650267489422,
+            "model_log_probability": -1.2032650267489422,
+            "nearest_known_name": "codestory",
+            "nearest_known_similarity": 0.7777777777777778,
+            "temperature": 0.96
+          },
+          {
+            "name": "coderocode",
+            "score": -1.2690126159227915,
+            "model_log_probability": -1.2330126159227914,
+            "nearest_known_name": "codecademy",
+            "nearest_known_similarity": 0.7,
+            "temperature": 0.72
+          },
+          {
+            "name": "compure",
+            "score": -1.3270657078922559,
+            "model_log_probability": -1.3090657078922558,
+            "nearest_known_name": "compresr",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.72
+          },
+          {
+            "name": "packit",
+            "score": -1.4339947232071755,
+            "model_log_probability": -1.3979947232071754,
+            "nearest_known_name": "opkit",
+            "nearest_known_similarity": 0.7272727272727273,
+            "temperature": 0.72
+          },
+          {
+            "name": "sunflex",
+            "score": -1.5097336325856834,
+            "model_log_probability": -1.4917336325856834,
+            "nearest_known_name": "sunflower",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.96
+          },
+          {
+            "name": "educkor",
+            "score": -1.5669755400237713,
+            "model_log_probability": -1.5489755400237712,
+            "nearest_known_name": "educato",
+            "nearest_known_similarity": 0.7142857142857143,
+            "temperature": 0.72
+          },
+          {
+            "name": "flockerut",
+            "score": -1.557542492068097,
+            "model_log_probability": -1.539542492068097,
+            "nearest_known_name": "locke",
+            "nearest_known_similarity": 0.7142857142857143,
+            "temperature": 1.08
+          },
+          {
+            "name": "sairmand",
+            "score": -1.5724908172544985,
+            "model_log_probability": -1.5724908172544985,
+            "nearest_known_name": "airmada",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.84
+          },
+          {
+            "name": "contus",
+            "score": -1.5508494335005434,
+            "model_log_probability": -1.5148494335005434,
+            "nearest_known_name": "consus",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.84
+          },
+          {
+            "name": "perenter",
+            "score": -1.5843283969565587,
+            "model_log_probability": -1.5843283969565587,
+            "nearest_known_name": "upverter",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.84
+          },
+          {
+            "name": "cademock",
+            "score": -1.5916178751434662,
+            "model_log_probability": -1.5916178751434662,
+            "nearest_known_name": "dock",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.72
+          },
+          {
+            "name": "code airas",
+            "score": -1.542057165863824,
+            "model_log_probability": -1.446057165863824,
+            "nearest_known_name": "codewisp",
+            "nearest_known_similarity": 0.7058823529411765,
+            "temperature": 0.72
+          }
+        ],
+        "Fintech": [
+          {
+            "name": "packit",
+            "score": -1.3912756507058797,
+            "model_log_probability": -1.3552756507058796,
+            "nearest_known_name": "opkit",
+            "nearest_known_similarity": 0.7272727272727273,
+            "temperature": 0.84
+          },
+          {
+            "name": "chardstate",
+            "score": -1.4203908751933452,
+            "model_log_probability": -1.3843908751933451,
+            "nearest_known_name": "headstart",
+            "nearest_known_similarity": 0.7368421052631579,
+            "temperature": 0.72
+          },
+          {
+            "name": "carver",
+            "score": -1.5122280140766446,
+            "model_log_probability": -1.4762280140766446,
+            "nearest_known_name": "corvera",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          },
+          {
+            "name": "packor",
+            "score": -1.4766581425126426,
+            "model_log_probability": -1.4406581425126426,
+            "nearest_known_name": "panora",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.84
+          },
+          {
+            "name": "packen",
+            "score": -1.4842555458105182,
+            "model_log_probability": -1.4482555458105182,
+            "nearest_known_name": "paces",
+            "nearest_known_similarity": 0.7272727272727273,
+            "temperature": 0.84
+          },
+          {
+            "name": "manker",
+            "score": -1.5745380485785834,
+            "model_log_probability": -1.5385380485785833,
+            "nearest_known_name": "marker",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.96
+          },
+          {
+            "name": "instackd",
+            "score": -1.6088161798198715,
+            "model_log_probability": -1.6088161798198715,
+            "nearest_known_name": "in stock",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.96
+          },
+          {
+            "name": "arkana",
+            "score": -1.6294575077132774,
+            "model_log_probability": -1.5934575077132773,
+            "nearest_known_name": "arzana",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.72
+          },
+          {
+            "name": "packispark",
+            "score": -1.519461517538145,
+            "model_log_probability": -1.483461517538145,
+            "nearest_known_name": "spark",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.96
+          },
+          {
+            "name": "wovencare",
+            "score": -1.627422038256924,
+            "model_log_probability": -1.609422038256924,
+            "nearest_known_name": "novelcare",
+            "nearest_known_similarity": 0.7777777777777778,
+            "temperature": 0.84
+          },
+          {
+            "name": "codemand",
+            "score": -1.6404896018498887,
+            "model_log_probability": -1.6404896018498887,
+            "nearest_known_name": "codexa",
+            "nearest_known_similarity": 0.7142857142857143,
+            "temperature": 0.72
+          },
+          {
+            "name": "panari",
+            "score": -1.6118855848739972,
+            "model_log_probability": -1.5758855848739972,
+            "nearest_known_name": "pandai",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.84
+          }
+        ],
+        "Healthcare": [
+          {
+            "name": "reve health",
+            "score": -1.3446373631493165,
+            "model_log_probability": -0.9506373631493164,
+            "nearest_known_name": "hive health",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.72
+          },
+          {
+            "name": "convertet healthcare",
+            "score": -1.3989550044847519,
+            "model_log_probability": -1.1229550044847518,
+            "nearest_known_name": "hey healthcare",
+            "nearest_known_similarity": 0.6875,
+            "temperature": 0.72
+          },
+          {
+            "name": "aghion biosciences",
+            "score": -1.5067577293929308,
+            "model_log_probability": -0.9867577293929308,
+            "nearest_known_name": "anto biosciences",
+            "nearest_known_similarity": 0.8125,
+            "temperature": 0.84
+          },
+          {
+            "name": "salar health",
+            "score": -1.4111205256391837,
+            "model_log_probability": -0.9991205256391835,
+            "nearest_known_name": "sohar health",
+            "nearest_known_similarity": 0.8181818181818182,
+            "temperature": 0.72
+          },
+          {
+            "name": "pronchel biotych",
+            "score": -1.5233591376234163,
+            "model_log_probability": -1.3193591376234164,
+            "nearest_known_name": "parcelbio",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.72
+          },
+          {
+            "name": "brickit",
+            "score": -1.5432745199467213,
+            "model_log_probability": -1.5252745199467213,
+            "nearest_known_name": "bricksai",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.84
+          },
+          {
+            "name": "provel health",
+            "score": -1.442765458174903,
+            "model_log_probability": -1.0127654581749028,
+            "nearest_known_name": "rovi health",
+            "nearest_known_similarity": 0.8181818181818182,
+            "temperature": 0.72
+          },
+          {
+            "name": "zent health",
+            "score": -1.4530642816372379,
+            "model_log_probability": -1.0590642816372378,
+            "nearest_known_name": "obento health",
+            "nearest_known_similarity": 0.8181818181818182,
+            "temperature": 0.84
+          },
+          {
+            "name": "pinse bioncerous",
+            "score": -1.5265055695420435,
+            "model_log_probability": -1.3225055695420436,
+            "nearest_known_name": "indinero",
+            "nearest_known_similarity": 0.6086956521739131,
+            "temperature": 0.72
+          },
+          {
+            "name": "sente labs",
+            "score": -1.5588198544646263,
+            "model_log_probability": -1.1828198544646262,
+            "nearest_known_name": "aseon labs",
+            "nearest_known_similarity": 0.7777777777777778,
+            "temperature": 0.72
+          },
+          {
+            "name": "airnal health",
+            "score": -1.4593241355657567,
+            "model_log_probability": -1.0293241355657565,
+            "nearest_known_name": "cairns health",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 1.08
+          },
+          {
+            "name": "heall health",
+            "score": -1.460212228317188,
+            "model_log_probability": -1.048212228317188,
+            "nearest_known_name": "allia health",
+            "nearest_known_similarity": 0.8181818181818182,
+            "temperature": 0.72
+          }
+        ],
+        "Industrials": [
+          {
+            "name": "coreboord",
+            "score": -1.4781681284023425,
+            "model_log_probability": -1.4601681284023424,
+            "nearest_known_name": "foreword",
+            "nearest_known_similarity": 0.7058823529411765,
+            "temperature": 0.72
+          },
+          {
+            "name": "moro robotics",
+            "score": -1.503123308624607,
+            "model_log_probability": -1.0731233086246068,
+            "nearest_known_name": "auro robotics",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.96
+          },
+          {
+            "name": "spackate",
+            "score": -1.5150949256426844,
+            "model_log_probability": -1.5150949256426844,
+            "nearest_known_name": "spate",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          },
+          {
+            "name": "starabourd",
+            "score": -1.530643068210668,
+            "model_log_probability": -1.494643068210668,
+            "nearest_known_name": "starcloud",
+            "nearest_known_similarity": 0.7368421052631579,
+            "temperature": 0.84
+          },
+          {
+            "name": "arrana",
+            "score": -1.5797585406034262,
+            "model_log_probability": -1.5437585406034262,
+            "nearest_known_name": "arzana",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.84
+          },
+          {
+            "name": "mentris",
+            "score": -1.557397438386499,
+            "model_log_probability": -1.539397438386499,
+            "nearest_known_name": "metis",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.72
+          },
+          {
+            "name": "onstroom",
+            "score": -1.5984053112920311,
+            "model_log_probability": -1.5984053112920311,
+            "nearest_known_name": "onsite pro",
+            "nearest_known_similarity": 0.7058823529411765,
+            "temperature": 0.96
+          },
+          {
+            "name": "bristint",
+            "score": -1.6249840784914358,
+            "model_log_probability": -1.6249840784914358,
+            "nearest_known_name": "instinct",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.96
+          },
+          {
+            "name": "andarcone",
+            "score": -1.639643001011955,
+            "model_log_probability": -1.621643001011955,
+            "nearest_known_name": "madrone",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.72
+          },
+          {
+            "name": "perap redotics",
+            "score": -1.5885630696118702,
+            "model_log_probability": -1.42056306961187,
+            "nearest_known_name": "earendil robotics",
+            "nearest_known_similarity": 0.6896551724137931,
+            "temperature": 0.72
+          },
+          {
+            "name": "buildsater",
+            "score": -1.6781525205373853,
+            "model_log_probability": -1.6421525205373853,
+            "nearest_known_name": "buildspace",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.96
+          },
+          {
+            "name": "carbles",
+            "score": -1.6855887964602299,
+            "model_log_probability": -1.6675887964602298,
+            "nearest_known_name": "marble",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.96
+          }
+        ],
+        "Other": [
+          {
+            "name": "mandstack",
+            "score": -1.368253630781066,
+            "model_log_probability": -1.350253630781066,
+            "nearest_known_name": "endstack",
+            "nearest_known_similarity": 0.8235294117647058,
+            "temperature": 0.72
+          },
+          {
+            "name": "compurlity",
+            "score": -1.4314000289603057,
+            "model_log_probability": -1.3954000289603057,
+            "nearest_known_name": "complif",
+            "nearest_known_similarity": 0.7058823529411765,
+            "temperature": 0.72
+          },
+          {
+            "name": "flowdatum",
+            "score": -1.451345490841759,
+            "model_log_probability": -1.4333454908417589,
+            "nearest_known_name": "float",
+            "nearest_known_similarity": 0.7142857142857143,
+            "temperature": 0.72
+          },
+          {
+            "name": "traver industries",
+            "score": -1.4738173529183558,
+            "model_log_probability": -0.9718173529183558,
+            "nearest_known_name": "ares industries",
+            "nearest_known_similarity": 0.8,
+            "temperature": 0.72
+          },
+          {
+            "name": "velic labs",
+            "score": -1.4810097880128974,
+            "model_log_probability": -1.1050097880128973,
+            "nearest_known_name": "lilac labs",
+            "nearest_known_similarity": 0.7777777777777778,
+            "temperature": 0.72
+          },
+          {
+            "name": "modingumedics",
+            "score": -1.5350670012396077,
+            "model_log_probability": -1.4450670012396076,
+            "nearest_known_name": "mango medical",
+            "nearest_known_similarity": 0.64,
+            "temperature": 0.72
+          },
+          {
+            "name": "mackit",
+            "score": -1.5106159181667689,
+            "model_log_probability": -1.4746159181667688,
+            "nearest_known_name": "markit",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.72
+          },
+          {
+            "name": "instivent",
+            "score": -1.5928762114477544,
+            "model_log_probability": -1.5748762114477544,
+            "nearest_known_name": "instinct",
+            "nearest_known_similarity": 0.8235294117647058,
+            "temperature": 0.84
+          },
+          {
+            "name": "hemone rodical",
+            "score": -1.6068183063535662,
+            "model_log_probability": -1.4388183063535662,
+            "nearest_known_name": "onelocal",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.96
+          },
+          {
+            "name": "velagion",
+            "score": -1.5787388460263165,
+            "model_log_probability": -1.5787388460263165,
+            "nearest_known_name": "pelago",
+            "nearest_known_similarity": 0.7142857142857143,
+            "temperature": 0.72
+          },
+          {
+            "name": "claventre stace",
+            "score": -1.6262842257509105,
+            "model_log_probability": -1.4402842257509103,
+            "nearest_known_name": "latent space",
+            "nearest_known_similarity": 0.72,
+            "temperature": 0.72
+          },
+          {
+            "name": "prandane",
+            "score": -1.6388122042411721,
+            "model_log_probability": -1.6388122042411721,
+            "nearest_known_name": "prana",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          }
+        ],
+        "Real Estate and Construction": [
+          {
+            "name": "chardesurids",
+            "score": -1.3495817514305801,
+            "model_log_probability": -1.27758175143058,
+            "nearest_known_name": "careoasis",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.96
+          },
+          {
+            "name": "parchive",
+            "score": -1.396472138833413,
+            "model_log_probability": -1.396472138833413,
+            "nearest_known_name": "upchieve",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.72
+          },
+          {
+            "name": "codentork",
+            "score": -1.4439155239923458,
+            "model_log_probability": -1.4259155239923458,
+            "nearest_known_name": "codestory",
+            "nearest_known_similarity": 0.7777777777777778,
+            "temperature": 0.72
+          },
+          {
+            "name": "sparbascience",
+            "score": -1.4656400929463833,
+            "model_log_probability": -1.3756400929463832,
+            "nearest_known_name": "prescience",
+            "nearest_known_similarity": 0.782608695652174,
+            "temperature": 0.72
+          },
+          {
+            "name": "brianclow",
+            "score": -1.5366071119621953,
+            "model_log_probability": -1.5186071119621953,
+            "nearest_known_name": "inflow",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.72
+          },
+          {
+            "name": "compun industries",
+            "score": -1.5746464480129634,
+            "model_log_probability": -1.0726464480129634,
+            "nearest_known_name": "neuron industries",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.72
+          },
+          {
+            "name": "bulldo",
+            "score": -1.5938578655375086,
+            "model_log_probability": -1.5578578655375086,
+            "nearest_known_name": "bulldozair",
+            "nearest_known_similarity": 0.75,
+            "temperature": 0.72
+          },
+          {
+            "name": "hemand",
+            "score": -1.6671698718241286,
+            "model_log_probability": -1.6311698718241285,
+            "nearest_known_name": "humand",
+            "nearest_known_similarity": 0.8333333333333334,
+            "temperature": 0.84
+          },
+          {
+            "name": "riveld",
+            "score": -1.67405472520144,
+            "model_log_probability": -1.63805472520144,
+            "nearest_known_name": "ritivel",
+            "nearest_known_similarity": 0.7692307692307693,
+            "temperature": 0.72
+          },
+          {
+            "name": "compoo robotics",
+            "score": -1.6380999716252085,
+            "model_log_probability": -1.1720999716252083,
+            "nearest_known_name": "cosmic robotics",
+            "nearest_known_similarity": 0.7857142857142857,
+            "temperature": 0.72
+          },
+          {
+            "name": "insperp",
+            "score": -1.6988734352884152,
+            "model_log_probability": -1.6808734352884152,
+            "nearest_known_name": "infer",
+            "nearest_known_similarity": 0.6666666666666666,
+            "temperature": 0.72
+          },
+          {
+            "name": "porpactround",
+            "score": -1.6741777841029635,
+            "model_log_probability": -1.6021777841029634,
+            "nearest_known_name": "pollground",
+            "nearest_known_similarity": 0.6363636363636364,
+            "temperature": 0.72
+          }
+        ]
+      }
+    }
+  }
+}
