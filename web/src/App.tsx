@@ -164,7 +164,7 @@ export default function App() {
     setIsCheckingDomains(true);
     setDomainResults([]);
 
-    void checkNameDomains(activeName).then((checks) => {
+    void checkNameDomains(activeName, category).then((checks) => {
       if (currentRequest === domainRequestId.current) setDomainResults(checks);
     }).finally(() => {
       if (currentRequest === domainRequestId.current) setIsCheckingDomains(false);
@@ -173,7 +173,7 @@ export default function App() {
     return () => {
       if (currentRequest === domainRequestId.current) domainRequestId.current += 1;
     };
-  }, [activeName, isGenerating]);
+  }, [activeName, category, isGenerating]);
 
   function handleCategory(nextCategory: string) {
     setCategory(nextCategory);
