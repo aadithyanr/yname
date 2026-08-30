@@ -87,13 +87,19 @@ class CompanyName:
 
 
 def load_companies(path: Path) -> tuple[list[CompanyName], dict]:
-    records = json.loads(path.read_text(encoding="utf-8"))
+    if path.suffix.casefold() == ".csv":
+        with path.open(encoding="utf-8", newline="") as source:
+            records = [dict(row) for row in csv.DictReader(source)]
+    else:
+        records = json.loads(path.read_text(encoding="utf-8"))
     grouped: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
     dropped = 0
     changed = 0
 
     for record in records:
-        original = str(record.get("name") or "").strip()
+        original = str(
+            record.get("original_name") or record.get("original") or record.get("name") or ""
+        ).strip()
         name = normalize_name(original)
         if len(canonical_key(name)) < 2:
             dropped += 1

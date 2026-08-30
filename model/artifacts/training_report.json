@@ -75,7 +75,7 @@
     "Real Estate and Construction"
   ],
   "config": {
-    "data": "data/yc_companies.json",
+    "data": "data/yc_name_training_corpus.csv",
     "output_dir": "model/artifacts",
     "steps": 3500,
     "batch_size": 384,

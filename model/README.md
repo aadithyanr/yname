@@ -19,8 +19,8 @@ next-character probabilities
 
 - `tiny_mlp.py` is a small educational implementation using twelve familiar
   startup names.
-- `train.py` cleans the YC directory, creates stratified splits, trains both
-  models, evaluates them, and writes compressed NumPy archives.
+- `train.py` loads the cleaned training corpus, creates stratified splits,
+  trains both models, evaluates them, and writes compressed NumPy archives.
 - `generate.py` samples filtered names from the trained archives.
 - `artifacts/` contains the model snapshots and training report used by the
   browser app.
