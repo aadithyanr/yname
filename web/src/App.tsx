@@ -6,6 +6,10 @@ import {
   type Creativity,
   type GeneratedName,
 } from "./lib/generator";
+import {
+  checkNameDomains,
+  type DomainResult,
+} from "./lib/domains";
 import { loadModel } from "./lib/model";
 
 const CATEGORIES = [
@@ -47,6 +51,15 @@ function CheckIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="m5 12.5 4.2 4.2L19 7" />
+    </svg>
+  );
+}
+
+function GlobeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M3.8 12h16.4M12 3.5c2.2 2.3 3.3 5.2 3.3 8.5S14.2 18.2 12 20.5M12 3.5C9.8 5.8 8.7 8.7 8.7 12s1.1 6.2 3.3 8.5" />
     </svg>
   );
 }
@@ -96,7 +109,10 @@ export default function App() {
   const [isGenerating, setIsGenerating] = useState(true);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [domainResults, setDomainResults] = useState<DomainResult[]>([]);
+  const [isCheckingDomains, setIsCheckingDomains] = useState(false);
   const requestId = useRef(0);
+  const domainRequestId = useRef(0);
 
   async function runGeneration(
     nextCategory = category,
@@ -104,7 +120,10 @@ export default function App() {
     seed = randomSeed(),
   ) {
     const currentRequest = ++requestId.current;
+    domainRequestId.current += 1;
     setIsGenerating(true);
+    setIsCheckingDomains(false);
+    setDomainResults([]);
     setError("");
     setMessage("");
     try {
@@ -177,7 +196,23 @@ export default function App() {
     window.setTimeout(() => setMessage(""), 1600);
   }
 
+  async function checkCurrentDomains() {
+    if (!results[0] || isGenerating) return;
+    const currentRequest = ++domainRequestId.current;
+    setIsCheckingDomains(true);
+
+    try {
+      const checks = await checkNameDomains(results[0].name);
+      if (currentRequest === domainRequestId.current) setDomainResults(checks);
+    } finally {
+      if (currentRequest === domainRequestId.current) setIsCheckingDomains(false);
+    }
+  }
+
   function promote(result: GeneratedName) {
+    domainRequestId.current += 1;
+    setDomainResults([]);
+    setIsCheckingDomains(false);
     setResults((current) => [
       result,
       ...current.filter((item) => item.name !== result.name),
@@ -242,6 +277,35 @@ export default function App() {
                   {message ? <CheckIcon /> : <CopyIcon />}
                 </button>
               </div>
+            </div>
+
+            <div className="domain-area" aria-live="polite">
+              {domainResults.length > 0 && (
+                <div className="domain-results" aria-label="domain availability">
+                  {domainResults.map((result) => (
+                    <span className="domain-result" key={result.domain}>
+                      <span>{result.domain}</span>
+                      <span className={`domain-status is-${result.availability}`}>
+                        {result.availability === "available" ? "available" : result.availability}
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              )}
+              <button
+                type="button"
+                className="domain-trigger"
+                onClick={() => void checkCurrentDomains()}
+                disabled={!results[0] || isGenerating || isCheckingDomains}
+                title="Registry lookup; availability is not a reservation"
+              >
+                <GlobeIcon />
+                {isCheckingDomains
+                  ? "checking..."
+                  : domainResults.length > 0
+                    ? "check again"
+                    : "check domains"}
+              </button>
             </div>
           </div>
 

@@ -392,6 +392,88 @@ a {
   opacity: 0.4;
 }
 
+.domain-area {
+  display: flex;
+  min-height: 31px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 13px;
+}
+
+.domain-trigger {
+  display: inline-flex;
+  height: 29px;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  background: transparent;
+  padding: 0 8px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.domain-trigger svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.domain-trigger:hover:not(:disabled),
+.domain-trigger:focus-visible {
+  background: #f0f0e9;
+  color: var(--orange);
+}
+
+.domain-trigger:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.domain-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.domain-result {
+  display: inline-flex;
+  min-height: 27px;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 4px 8px;
+  color: var(--text);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.domain-status {
+  color: var(--quiet);
+  font-weight: 400;
+}
+
+.domain-status.is-available {
+  color: var(--orange);
+}
+
+.domain-status.is-unknown {
+  color: var(--muted);
+}
+
 .control-stack {
   position: relative;
   width: min(100%, 620px);
@@ -710,6 +792,21 @@ a {
     width: 36px;
     height: 36px;
     border-radius: 9px;
+  }
+
+  .domain-area {
+    margin-top: 10px;
+  }
+
+  .domain-result {
+    min-height: 25px;
+    padding: 3px 7px;
+    font-size: 9px;
+  }
+
+  .domain-trigger {
+    height: 27px;
+    font-size: 10px;
   }
 
   .control-stack {
