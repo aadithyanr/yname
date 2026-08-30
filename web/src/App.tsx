@@ -55,15 +55,6 @@ function CheckIcon() {
   );
 }
 
-function GlobeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="8.5" />
-      <path d="M3.8 12h16.4M12 3.5c2.2 2.3 3.3 5.2 3.3 8.5S14.2 18.2 12 20.5M12 3.5C9.8 5.8 8.7 8.7 8.7 12s1.1 6.2 3.3 8.5" />
-    </svg>
-  );
-}
-
 function NameUnderline() {
   return (
     <svg className="name-underline" viewBox="0 0 420 28" preserveAspectRatio="none" aria-hidden="true">
@@ -164,6 +155,26 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const activeName = results[0]?.name ?? "";
+
+  useEffect(() => {
+    if (!activeName || isGenerating) return;
+
+    const currentRequest = ++domainRequestId.current;
+    setIsCheckingDomains(true);
+    setDomainResults([]);
+
+    void checkNameDomains(activeName).then((checks) => {
+      if (currentRequest === domainRequestId.current) setDomainResults(checks);
+    }).finally(() => {
+      if (currentRequest === domainRequestId.current) setIsCheckingDomains(false);
+    });
+
+    return () => {
+      if (currentRequest === domainRequestId.current) domainRequestId.current += 1;
+    };
+  }, [activeName, isGenerating]);
+
   function handleCategory(nextCategory: string) {
     setCategory(nextCategory);
     void runGeneration(nextCategory, creativity);
@@ -194,19 +205,6 @@ export default function App() {
     await copyText(results[0].name);
     setMessage("name copied");
     window.setTimeout(() => setMessage(""), 1600);
-  }
-
-  async function checkCurrentDomains() {
-    if (!results[0] || isGenerating) return;
-    const currentRequest = ++domainRequestId.current;
-    setIsCheckingDomains(true);
-
-    try {
-      const checks = await checkNameDomains(results[0].name);
-      if (currentRequest === domainRequestId.current) setDomainResults(checks);
-    } finally {
-      if (currentRequest === domainRequestId.current) setIsCheckingDomains(false);
-    }
   }
 
   function promote(result: GeneratedName) {
@@ -279,33 +277,39 @@ export default function App() {
               </div>
             </div>
 
-            <div className="domain-area" aria-live="polite">
+            <div className="domain-area" aria-live="polite" aria-busy={isCheckingDomains}>
               {domainResults.length > 0 && (
                 <div className="domain-results" aria-label="domain availability">
                   {domainResults.map((result) => (
-                    <span className="domain-result" key={result.domain}>
+                    <span
+                      className="domain-result"
+                      key={result.domain}
+                      aria-label={`${result.domain} ${
+                        result.availability === "available"
+                          ? "likely available"
+                          : result.availability
+                      }`}
+                      title={
+                        result.availability === "available"
+                          ? "Likely available — confirm before purchasing"
+                          : result.availability
+                      }
+                    >
                       <span>{result.domain}</span>
-                      <span className={`domain-status is-${result.availability}`}>
-                        {result.availability === "available" ? "available" : result.availability}
+                      <span
+                        className={`domain-status is-${result.availability}`}
+                        aria-hidden="true"
+                      >
+                        {result.availability === "available"
+                          ? "✓"
+                          : result.availability === "taken"
+                            ? "×"
+                            : "?"}
                       </span>
                     </span>
                   ))}
                 </div>
               )}
-              <button
-                type="button"
-                className="domain-trigger"
-                onClick={() => void checkCurrentDomains()}
-                disabled={!results[0] || isGenerating || isCheckingDomains}
-                title="Registry lookup; availability is not a reservation"
-              >
-                <GlobeIcon />
-                {isCheckingDomains
-                  ? "checking..."
-                  : domainResults.length > 0
-                    ? "check again"
-                    : "check domains"}
-              </button>
             </div>
           </div>
 
