@@ -183,24 +183,29 @@ a {
   gap: 3px;
 }
 
-.dataset-credit {
-  margin: 0;
-  color: var(--quiet);
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: 1.2;
+.context-cookie {
+  position: absolute;
+  z-index: 2;
+  left: clamp(6px, calc(50vw - 770px), 64px);
+  bottom: clamp(5px, 1vw, 16px);
+  display: block;
+  width: clamp(126px, 10vw, 180px);
+  filter: drop-shadow(0 7px 8px rgb(56 37 19 / 13%));
+  transform: rotate(-4deg);
+  transform-origin: 20% 50%;
+  transition: filter 160ms ease, transform 160ms ease;
 }
 
-.dataset-credit a {
-  color: var(--context-blue);
-  font-weight: 500;
-  text-decoration: none;
+.context-cookie:hover,
+.context-cookie:focus-visible {
+  filter: drop-shadow(0 10px 10px rgb(56 37 19 / 18%));
+  transform: rotate(-2deg) translateY(-3px);
 }
 
-.dataset-credit a:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+.context-cookie img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .generator {
@@ -703,8 +708,8 @@ a {
     gap: 2px;
   }
 
-  .dataset-credit {
-    font-size: 8px;
+  .context-cookie {
+    display: none;
   }
 
   .generator {

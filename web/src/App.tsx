@@ -243,9 +243,6 @@ export default function App() {
             <a className="maker-link" href="https://aadithyanr.dev">
               by aadithyan ↗
             </a>
-            <p className="dataset-credit">
-              dataset scraped with <a href="https://context.dev">context.dev</a>
-            </p>
           </div>
         </header>
 
@@ -384,6 +381,14 @@ export default function App() {
         </section>
 
       </section>
+
+      <a
+        className="context-cookie"
+        href="https://context.dev"
+        aria-label="built using Context.dev"
+      >
+        <img src="https://webdog.ai/fortunecookie.png" alt="built using Context.dev" />
+      </a>
     </main>
   );
 }
