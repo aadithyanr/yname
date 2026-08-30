@@ -1,5 +1,6 @@
 .DS_Store
 .venv/
+.vercel/
 __pycache__/
 *.pyc
 data/yc_companies.json
@@ -10,3 +11,4 @@ web/.vercel/
 web/*.tsbuildinfo
 web/vite.config.js
 web/vite.config.d.ts
+.env*.local
