@@ -1,6 +1,6 @@
 # yname
 
-Generate a YC startup name before someone else does.
+Generate a YC startup name or idea before someone else does.
 
 https://github.com/user-attachments/assets/b884127d-050b-451d-8dd8-2e6c1068a47c
 
@@ -9,6 +9,32 @@ scratch on 6,194 YC company names. The dataset was scraped with
 [Context.dev](https://context.dev/).
 
 The model runs locally in your browser. No LLM and no backend.
+
+## Generate startup ideas
+
+The experimental idea generator learns from public YC company one-liners and
+produces new, industry-conditioned combinations locally. It uses no pretrained
+model or language-model API.
+
+```bash
+python data/prepare_idea_corpus.py
+python model/train_ideas.py
+
+python model/generate_ideas.py \
+  --category Healthcare \
+  --creativity medium \
+  --count 10
+```
+
+Run `python model/generate_ideas.py --list-categories` to inspect the available
+industries. Generation rejects exact training examples, near copies, malformed
+one-liners, and repetitive results. The same model is exported into the browser
+app, where the **names / ideas** switch runs generation locally and stores mode,
+industry, creativity, and seed in a shareable URL.
+
+```bash
+python model/evaluate_ideas.py
+```
 
 ## Run locally
 

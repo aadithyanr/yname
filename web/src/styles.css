@@ -227,6 +227,42 @@ a {
   line-height: 1.4;
 }
 
+.mode-switch {
+  display: inline-flex;
+  gap: 3px;
+  margin-bottom: 7px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #efefe8;
+  padding: 3px;
+}
+
+.mode-switch button {
+  min-width: 65px;
+  height: 27px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  transition: background 140ms ease, color 140ms ease, box-shadow 140ms ease;
+}
+
+.mode-switch button:hover:not(:disabled) {
+  color: var(--text);
+}
+
+.mode-switch button.is-active {
+  background: var(--surface);
+  box-shadow: 0 1px 4px rgb(23 23 23 / 10%);
+  color: var(--orange);
+}
+
+.mode-switch button:disabled {
+  cursor: wait;
+}
+
 .name-stage {
   display: flex;
   min-height: 210px;
@@ -298,6 +334,27 @@ a {
 
 .generator h1.is-very-long {
   font-size: clamp(42px, 5vw, 62px);
+}
+
+.name-stage.is-idea {
+  min-height: 220px;
+  padding-top: 13px;
+}
+
+.name-stage.is-idea .name-content {
+  width: min(100%, 880px);
+}
+
+.name-stage.is-idea .name-text {
+  width: min(100%, 810px);
+}
+
+.generator h1.is-idea {
+  min-height: 96px;
+  font-size: clamp(29px, 3.7vw, 47px);
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  white-space: normal;
 }
 
 .name-underline {
@@ -442,6 +499,13 @@ a {
 
 .domain-status.is-unknown {
   color: var(--muted);
+}
+
+.idea-note {
+  color: var(--quiet);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.035em;
 }
 
 .control-stack {
@@ -643,6 +707,16 @@ a {
   white-space: nowrap;
 }
 
+.alternatives.is-ideas .alternative-name {
+  display: -webkit-box;
+  font-size: 12px;
+  line-height: 1.2;
+  text-overflow: clip;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
 @media (max-height: 680px) and (min-width: 701px) {
   .page-shell {
     padding: 24px;
@@ -721,6 +795,10 @@ a {
     font-size: 10px;
   }
 
+  .mode-switch {
+    margin-bottom: 6px;
+  }
+
   .name-stage {
     min-height: 190px;
     padding: 16px 0 10px;
@@ -743,6 +821,17 @@ a {
 
   .generator h1.is-very-long {
     font-size: clamp(29px, 8.6vw, 37px);
+  }
+
+  .name-stage.is-idea {
+    min-height: 210px;
+  }
+
+  .generator h1.is-idea {
+    min-height: 94px;
+    font-size: clamp(24px, 7.4vw, 34px);
+    letter-spacing: -0.04em;
+    line-height: 1.04;
   }
 
   .name-underline {
@@ -857,6 +946,10 @@ a {
     font-size: 14px;
   }
 
+  .alternatives.is-ideas .alternative-name {
+    font-size: 11px;
+  }
+
 }
 
 @media (max-width: 380px), (max-height: 700px) and (max-width: 700px) {
@@ -880,6 +973,15 @@ a {
   .generator h1 {
     min-height: 61px;
     font-size: clamp(40px, 13vw, 53px);
+  }
+
+  .name-stage.is-idea {
+    min-height: 184px;
+  }
+
+  .generator h1.is-idea {
+    min-height: 82px;
+    font-size: clamp(22px, 7vw, 30px);
   }
 
   .batch-strip {

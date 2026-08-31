@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Export NumPy model archives into tiny browser-readable binary assets."""
+"""Export local model archives into compact browser-readable assets."""
 
 from __future__ import annotations
 
 import csv
+import gzip
 import json
 import re
 from pathlib import Path
@@ -80,11 +81,30 @@ def export_known_names() -> None:
     )
 
 
+def export_idea_model() -> None:
+    """Export the compact phrase sampler used by the browser idea mode."""
+    source = MODEL_ROOT / "yc_idea_model.json.gz"
+    with gzip.open(source, "rt", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    browser_payload = {
+        "version": payload["version"],
+        "categories": payload["categories"],
+        "knownIdeas": payload["known_ideas"],
+        "globalTemplates": payload["global_templates"],
+        "categoryTemplates": payload["category_templates"],
+    }
+    (MODEL_OUTPUT / "ideas.json").write_text(
+        json.dumps(browser_payload, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
+
+
 def main() -> None:
     MODEL_OUTPUT.mkdir(parents=True, exist_ok=True)
     export_model("plain")
     export_model("conditional")
     export_known_names()
+    export_idea_model()
     print(f"exported browser assets to {MODEL_OUTPUT}")
 
 
