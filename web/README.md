@@ -1,7 +1,13 @@
 # Browser app
 
-The web app loads exported `float32` model weights and runs character inference
-directly in TypeScript. There is no server-side generation endpoint.
+The web app generates both YC-style startup names and startup ideas locally:
+
+- Name mode loads exported `float32` weights and runs character inference in
+  TypeScript.
+- Idea mode loads a compact phrase model and recombines industry-conditioned
+  solution and audience fragments with exact- and near-copy filtering.
+
+There is no server-side generation endpoint or language-model API.
 
 ```bash
 npm install

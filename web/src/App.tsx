@@ -4,13 +4,15 @@ import {
   loadNameIndex,
   randomSeed,
   type Creativity,
-  type GeneratedName,
 } from "./lib/generator";
 import {
   checkNameDomains,
   type DomainResult,
 } from "./lib/domains";
 import { loadModel } from "./lib/model";
+import { loadIdeaModel } from "./lib/ideas";
+
+type GeneratorMode = "names" | "ideas";
 
 const CATEGORIES = [
   "any industry",
@@ -57,7 +59,12 @@ function CheckIcon() {
 
 function NameUnderline() {
   return (
-    <svg className="name-underline" viewBox="0 0 420 28" preserveAspectRatio="none" aria-hidden="true">
+    <svg
+      className="name-underline"
+      viewBox="0 0 420 28"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
       <path d="M8 17c82-13 161-10 232-3 61 6 116 5 172-4" />
       <path d="M21 23c93-8 183-5 268-1 45 2 82 0 112-4" />
     </svg>
@@ -74,11 +81,13 @@ function BatchArrow() {
 }
 
 function readInitialState(): {
+  mode: GeneratorMode;
   category: string;
   creativity: Creativity;
   seed: number;
 } {
   const params = new URLSearchParams(window.location.search);
+  const mode: GeneratorMode = params.get("mode") === "ideas" ? "ideas" : "names";
   const requestedCategory = params.get("category") ?? "any industry";
   const category = CATEGORIES.includes(requestedCategory)
     ? requestedCategory
@@ -89,14 +98,15 @@ function readInitialState(): {
     : "yc";
   const parsedSeed = Number(params.get("seed"));
   const seed = Number.isSafeInteger(parsedSeed) && parsedSeed >= 0 ? parsedSeed : randomSeed();
-  return { category, creativity, seed };
+  return { mode, category, creativity, seed };
 }
 
 export default function App() {
   const initial = useRef(readInitialState());
+  const [mode, setMode] = useState<GeneratorMode>(initial.current.mode);
   const [category, setCategory] = useState(initial.current.category);
   const [creativity, setCreativity] = useState<Creativity>(initial.current.creativity);
-  const [results, setResults] = useState<GeneratedName[]>([]);
+  const [results, setResults] = useState<string[]>([]);
   const [isGenerating, setIsGenerating] = useState(true);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -106,6 +116,7 @@ export default function App() {
   const domainRequestId = useRef(0);
 
   async function runGeneration(
+    nextMode = mode,
     nextCategory = category,
     nextCreativity = creativity,
     seed = randomSeed(),
@@ -118,22 +129,35 @@ export default function App() {
     setError("");
     setMessage("");
     try {
-      const kind = nextCategory === "any industry" ? "plain" : "conditional";
-      const [model, index] = await Promise.all([loadModel(kind), loadNameIndex()]);
-      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
-      const generated = generateNames({
-        model,
-        index,
-        category: nextCategory,
-        creativity: nextCreativity,
-        count: 5,
-        seed,
-      });
+      let generated: string[];
+      if (nextMode === "ideas") {
+        const ideaModel = await loadIdeaModel();
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+        generated = ideaModel.generate({
+          category: nextCategory,
+          creativity: nextCreativity,
+          count: 5,
+          seed,
+        }).map((result) => result.idea);
+      } else {
+        const kind = nextCategory === "any industry" ? "plain" : "conditional";
+        const [nameModel, index] = await Promise.all([loadModel(kind), loadNameIndex()]);
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+        generated = generateNames({
+          model: nameModel,
+          index,
+          category: nextCategory,
+          creativity: nextCreativity,
+          count: 5,
+          seed,
+        }).map((result) => result.name);
+      }
       if (currentRequest !== requestId.current) return;
       if (generated.length === 0) throw new Error("the batch came back empty");
       setResults(generated);
       const params = new URLSearchParams();
       params.set("seed", String(seed));
+      if (nextMode === "ideas") params.set("mode", "ideas");
       if (nextCategory !== "any industry") params.set("category", nextCategory);
       if (nextCreativity !== "yc") params.set("vibe", nextCreativity);
       window.history.replaceState(null, "", `${window.location.pathname}?${params}`);
@@ -147,6 +171,7 @@ export default function App() {
 
   useEffect(() => {
     void runGeneration(
+      initial.current.mode,
       initial.current.category,
       initial.current.creativity,
       initial.current.seed,
@@ -155,10 +180,10 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const activeName = results[0]?.name ?? "";
+  const activeName = mode === "names" ? results[0] ?? "" : "";
 
   useEffect(() => {
-    if (!activeName || isGenerating) return;
+    if (mode !== "names" || !activeName || isGenerating) return;
 
     const currentRequest = ++domainRequestId.current;
     setIsCheckingDomains(true);
@@ -173,16 +198,22 @@ export default function App() {
     return () => {
       if (currentRequest === domainRequestId.current) domainRequestId.current += 1;
     };
-  }, [activeName, category, isGenerating]);
+  }, [activeName, category, isGenerating, mode]);
+
+  function handleMode(nextMode: GeneratorMode) {
+    if (nextMode === mode) return;
+    setMode(nextMode);
+    void runGeneration(nextMode, category, creativity);
+  }
 
   function handleCategory(nextCategory: string) {
     setCategory(nextCategory);
-    void runGeneration(nextCategory, creativity);
+    void runGeneration(mode, nextCategory, creativity);
   }
 
   function handleCreativity(nextCreativity: Creativity) {
     setCreativity(nextCreativity);
-    void runGeneration(category, nextCreativity);
+    void runGeneration(mode, category, nextCreativity);
   }
 
   async function copyText(value: string) {
@@ -200,38 +231,42 @@ export default function App() {
     }
   }
 
-  async function copyName() {
+  async function copyResult() {
     if (!results[0]) return;
-    await copyText(results[0].name);
-    setMessage("name copied");
+    await copyText(results[0]);
+    setMessage(`${mode === "names" ? "name" : "idea"} copied`);
     window.setTimeout(() => setMessage(""), 1600);
   }
 
-  function promote(result: GeneratedName) {
+  function promote(result: string) {
     domainRequestId.current += 1;
     setDomainResults([]);
     setIsCheckingDomains(false);
     setResults((current) => [
       result,
-      ...current.filter((item) => item.name !== result.name),
+      ...current.filter((item) => item !== result),
     ]);
   }
 
-  const displayName = error
+  const displayText = error
     ? error
     : isGenerating
-      ? "naming..."
-      : results[0]?.name ?? "";
-  const nameSizeClass = displayName.length > 18
-    ? " is-very-long"
-    : displayName.length > 13
-      ? " is-long"
-      : "";
+      ? mode === "names" ? "naming..." : "thinking..."
+      : results[0] ?? "";
+  const textSizeClass = mode === "ideas"
+    ? " is-idea"
+    : displayText.length > 18
+      ? " is-very-long"
+      : displayText.length > 13
+        ? " is-long"
+        : "";
 
   return (
-    <main className="page-shell">
+    <main className={`page-shell is-${mode}`}>
       <span className="backdrop-letter" aria-hidden="true">y</span>
-      <span className="backdrop-word" aria-hidden="true">name?</span>
+      <span className="backdrop-word" aria-hidden="true">
+        {mode === "names" ? "name?" : "idea?"}
+      </span>
 
       <section className="studio-card">
         <header className="site-header">
@@ -247,26 +282,55 @@ export default function App() {
         </header>
 
         <section className="generator">
+          <div className="mode-switch" role="group" aria-label="generator mode">
+            <button
+              type="button"
+              className={mode === "names" ? "is-active" : ""}
+              aria-pressed={mode === "names"}
+              onClick={() => handleMode("names")}
+              disabled={isGenerating}
+            >
+              names
+            </button>
+            <button
+              type="button"
+              className={mode === "ideas" ? "is-active" : ""}
+              aria-pressed={mode === "ideas"}
+              onClick={() => handleMode("ideas")}
+              disabled={isGenerating}
+            >
+              ideas
+            </button>
+          </div>
           <p className="generator-heading">
-            the yc startup name generator · trained on 6,194 company names
+            {mode === "names"
+              ? "the yc startup name generator · trained on 6,194 company names"
+              : "the yc startup idea generator · trained on 5,411 company one-liners"}
           </p>
 
-          <div className="name-stage">
-            <p className="name-intro">your next startup is called</p>
+          <div className={`name-stage${mode === "ideas" ? " is-idea" : ""}`}>
+            <p className="name-intro">
+              {mode === "names"
+                ? "your next startup is called"
+                : "your next startup could be"}
+            </p>
             <div className="name-lockup">
               <div className="name-content">
                 <div className="name-text">
-                  <h1 className={`${isGenerating ? "is-generating" : ""}${nameSizeClass}`} aria-live="polite">
-                    {displayName}
+                  <h1
+                    className={`${isGenerating ? "is-generating" : ""}${textSizeClass}`}
+                    aria-live="polite"
+                  >
+                    {displayText}
                   </h1>
                   <NameUnderline />
                 </div>
                 <button
                   type="button"
                   className={`name-copy${message ? " is-copied" : ""}`}
-                  aria-label={message ? "name copied" : "copy name"}
-                  data-tooltip={message || "copy name"}
-                  onClick={() => void copyName()}
+                  aria-label={message || `copy ${mode === "names" ? "name" : "idea"}`}
+                  data-tooltip={message || `copy ${mode === "names" ? "name" : "idea"}`}
+                  onClick={() => void copyResult()}
                   disabled={!results[0] || isGenerating}
                 >
                   {message ? <CheckIcon /> : <CopyIcon />}
@@ -307,11 +371,17 @@ export default function App() {
                   ))}
                 </div>
               )}
+              {mode === "ideas" && !isGenerating && !error && (
+                <span className="idea-note">generated locally · no llm · no backend</span>
+              )}
             </div>
           </div>
 
           <div className="control-stack">
-            <div className="controls" aria-label="name controls">
+            <div
+              className="controls"
+              aria-label={`${mode === "names" ? "name" : "idea"} controls`}
+            >
               <label className="select-control">
                 <span className="sr-only">industry</span>
                 <span className="select-shell">
@@ -355,7 +425,7 @@ export default function App() {
               <button
                 type="button"
                 className="generate-action"
-                onClick={() => void runGeneration()}
+                onClick={() => void runGeneration(mode, category, creativity)}
                 disabled={isGenerating}
               >
                 {isGenerating ? "making..." : "another"}
@@ -369,11 +439,19 @@ export default function App() {
               <span>also in<br />the batch</span>
               <BatchArrow />
             </div>
-            <div className="alternatives" aria-label="more names">
+            <div
+              className={`alternatives${mode === "ideas" ? " is-ideas" : ""}`}
+              aria-label={`more ${mode}`}
+            >
               {results.slice(1, 5).map((result, index) => (
-                <button type="button" key={result.name} onClick={() => promote(result)} disabled={isGenerating}>
+                <button
+                  type="button"
+                  key={result}
+                  onClick={() => promote(result)}
+                  disabled={isGenerating}
+                >
                   <span className="alternative-number">0{index + 1}</span>
-                  <span className="alternative-name">{result.name}</span>
+                  <span className="alternative-name">{result}</span>
                 </button>
               ))}
             </div>

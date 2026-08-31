@@ -1,0 +1,469 @@
+{
+  "generated_at": "2026-08-31T13:17:04.337460+00:00",
+  "seed": 20260831,
+  "training_rows": 4329,
+  "heldout_rows": 1082,
+  "coverage": {
+    "token_coverage": 0.9124,
+    "full_context_coverage": 0.5562
+  },
+  "generation": {
+    "requested": 64,
+    "accepted": 64,
+    "acceptance_rate": 1.0,
+    "exact_match_count": 0,
+    "mean_nearest_similarity": 0.6191,
+    "maximum_nearest_similarity": 0.7175,
+    "mean_word_count": 6.8
+  },
+  "samples": [
+    {
+      "category": "B2B",
+      "idea": "The platform for chemical manufacturing.",
+      "nearest_known_idea": "Foundation Model for Chemical Manufacturing",
+      "similarity": 0.62,
+      "word_count": 5
+    },
+    {
+      "category": "B2B",
+      "idea": "AI operating system for computer use and software engineering work.",
+      "nearest_known_idea": "Training gyms for computer use and software engineering work",
+      "similarity": 0.7029,
+      "word_count": 10
+    },
+    {
+      "category": "B2B",
+      "idea": "Computer-use agent swarms for construction finance.",
+      "nearest_known_idea": "Computer-use agent swarms for financial back offices",
+      "similarity": 0.5949,
+      "word_count": 6
+    },
+    {
+      "category": "B2B",
+      "idea": "E-commerce platform for regulated industries.",
+      "nearest_known_idea": "AI customer operations for regulated industries.",
+      "similarity": 0.6127,
+      "word_count": 5
+    },
+    {
+      "category": "B2B",
+      "idea": "Fully automated should-cost analysis for enterprise revenue.",
+      "nearest_known_idea": "Fully automated should-cost analysis for precision manufacturers.",
+      "similarity": 0.6267,
+      "word_count": 7
+    },
+    {
+      "category": "B2B",
+      "idea": "Voice AI for law firms.",
+      "nearest_known_idea": "Voice AI for developers.",
+      "similarity": 0.5831,
+      "word_count": 5
+    },
+    {
+      "category": "B2B",
+      "idea": "Specialized AI for data storytelling.",
+      "nearest_known_idea": "Specialized AI for Every Job",
+      "similarity": 0.5381,
+      "word_count": 5
+    },
+    {
+      "category": "B2B",
+      "idea": "Detect what AI can automate for all businesses.",
+      "nearest_known_idea": "Detect what AI can automate for your team",
+      "similarity": 0.6221,
+      "word_count": 8
+    },
+    {
+      "category": "Consumer",
+      "idea": "The platform for college students.",
+      "nearest_known_idea": "The platform for all your life events.",
+      "similarity": 0.5857,
+      "word_count": 5
+    },
+    {
+      "category": "Consumer",
+      "idea": "The one-stop shop for skin health.",
+      "nearest_known_idea": "The one-stop shop for healthy products",
+      "similarity": 0.6468,
+      "word_count": 6
+    },
+    {
+      "category": "Consumer",
+      "idea": "A marketplace of luxury services for edge-of-culture communities.",
+      "nearest_known_idea": "A marketplace of luxury services for the ultra-wealthy",
+      "similarity": 0.6115,
+      "word_count": 8
+    },
+    {
+      "category": "Consumer",
+      "idea": "AI copilot for healthy products.",
+      "nearest_known_idea": "The one-stop shop for healthy products",
+      "similarity": 0.5942,
+      "word_count": 5
+    },
+    {
+      "category": "Consumer",
+      "idea": "AI travel agent for 100m+homes.",
+      "nearest_known_idea": "AI Agent for Home Design",
+      "similarity": 0.5467,
+      "word_count": 6
+    },
+    {
+      "category": "Consumer",
+      "idea": "Wireless toy game controllers for curly hair.",
+      "nearest_known_idea": "Wireless toy game controllers for mobile games.",
+      "similarity": 0.6742,
+      "word_count": 7
+    },
+    {
+      "category": "Consumer",
+      "idea": "Office suite for less money.",
+      "nearest_known_idea": "Better coffee for less money",
+      "similarity": 0.5964,
+      "word_count": 5
+    },
+    {
+      "category": "Consumer",
+      "idea": "API sandboxes, built for auto-parts in mexico.",
+      "nearest_known_idea": "API sandboxes, built for AI agents",
+      "similarity": 0.5964,
+      "word_count": 7
+    },
+    {
+      "category": "Education",
+      "idea": "AI agents and unified data layer for auto body shops.",
+      "nearest_known_idea": "AI agents and unified data layer for revenue teams",
+      "similarity": 0.6271,
+      "word_count": 10
+    },
+    {
+      "category": "Education",
+      "idea": "AI automation for healthcare jobs.",
+      "nearest_known_idea": "Admin automation for healthcare",
+      "similarity": 0.7175,
+      "word_count": 5
+    },
+    {
+      "category": "Education",
+      "idea": "Tuition collection service for technical skills.",
+      "nearest_known_idea": "Tuition collection service for K-12 private schools in Africa",
+      "similarity": 0.5922,
+      "word_count": 6
+    },
+    {
+      "category": "Education",
+      "idea": "AI-driven online tech school for k12 education in africa.",
+      "nearest_known_idea": "Online school for K12 education in Africa",
+      "similarity": 0.6932,
+      "word_count": 9
+    },
+    {
+      "category": "Education",
+      "idea": "Operating system for remote teams.",
+      "nearest_known_idea": "AI Operating System for Legal Teams",
+      "similarity": 0.6753,
+      "word_count": 5
+    },
+    {
+      "category": "Education",
+      "idea": "Tuition collection service for test prep.",
+      "nearest_known_idea": "Tuition collection service for K-12 private schools in Africa",
+      "similarity": 0.5683,
+      "word_count": 6
+    },
+    {
+      "category": "Education",
+      "idea": "All-in-one software for k-8 teachers, kids, and families.",
+      "nearest_known_idea": "Communication app for K-8 teachers, kids, and families",
+      "similarity": 0.6343,
+      "word_count": 8
+    },
+    {
+      "category": "Education",
+      "idea": "AI customer operations for special needs parenting.",
+      "nearest_known_idea": "Affordable expertise for special needs parenting.",
+      "similarity": 0.6192,
+      "word_count": 7
+    },
+    {
+      "category": "Fintech",
+      "idea": "Affordable insurance for your personal finances.",
+      "nearest_known_idea": "AI Agent for your personal finances",
+      "similarity": 0.62,
+      "word_count": 6
+    },
+    {
+      "category": "Fintech",
+      "idea": "Modern payroll for exporters of physical goods.",
+      "nearest_known_idea": "Cross-border payments for exporters of physical goods.",
+      "similarity": 0.6626,
+      "word_count": 7
+    },
+    {
+      "category": "Fintech",
+      "idea": "Operating system for billing automation.",
+      "nearest_known_idea": "AI-Powered Spreadsheet for Billing Automation",
+      "similarity": 0.5857,
+      "word_count": 5
+    },
+    {
+      "category": "Fintech",
+      "idea": "AI back-office automation for consumer liabilities.",
+      "nearest_known_idea": "AI Back-Office Automation for Commercial Lenders",
+      "similarity": 0.6527,
+      "word_count": 6
+    },
+    {
+      "category": "Fintech",
+      "idea": "Instant loans for banks & fintechs.",
+      "nearest_known_idea": "AI Compliance Analysts for Banks & Fintechs",
+      "similarity": 0.5392,
+      "word_count": 5
+    },
+    {
+      "category": "Fintech",
+      "idea": "AI that works for health insurance brokers.",
+      "nearest_known_idea": "The AI copilot for health insurance brokers.",
+      "similarity": 0.6367,
+      "word_count": 7
+    },
+    {
+      "category": "Fintech",
+      "idea": "The digital bank for insurance companies to process claims.",
+      "nearest_known_idea": "Making it easy for insurance companies to process claims",
+      "similarity": 0.6618,
+      "word_count": 9
+    },
+    {
+      "category": "Fintech",
+      "idea": "AI search for latin america.",
+      "nearest_known_idea": "Alibaba for Latin America",
+      "similarity": 0.6623,
+      "word_count": 5
+    },
+    {
+      "category": "Healthcare",
+      "idea": "AI-powered patient identification for AI apps.",
+      "nearest_known_idea": "AI-powered Patient Identification for Clinical Trials",
+      "similarity": 0.7029,
+      "word_count": 6
+    },
+    {
+      "category": "Healthcare",
+      "idea": "Smart gels for protein engineering.",
+      "nearest_known_idea": "Accelerating protein engineering.",
+      "similarity": 0.5964,
+      "word_count": 5
+    },
+    {
+      "category": "Healthcare",
+      "idea": "AI assistants for AI chip design.",
+      "nearest_known_idea": "An AI physics simulator for AI chip design",
+      "similarity": 0.5762,
+      "word_count": 6
+    },
+    {
+      "category": "Healthcare",
+      "idea": "AI agents and unified data layer for greater mental health.",
+      "nearest_known_idea": "AI agents and unified data layer for revenue teams",
+      "similarity": 0.6378,
+      "word_count": 10
+    },
+    {
+      "category": "Healthcare",
+      "idea": "Group-therapy platform for medical providers.",
+      "nearest_known_idea": "Group-Therapy Platform for Providers and Health Systems",
+      "similarity": 0.5964,
+      "word_count": 5
+    },
+    {
+      "category": "Healthcare",
+      "idea": "The AI scientist for companies in latam.",
+      "nearest_known_idea": "Learning Hub for companies in Latam",
+      "similarity": 0.5319,
+      "word_count": 7
+    },
+    {
+      "category": "Healthcare",
+      "idea": "Computer-using agents for medical clinics to work with insurance.",
+      "nearest_known_idea": "Making it simpler for medical clinics to work with insurance",
+      "similarity": 0.6481,
+      "word_count": 9
+    },
+    {
+      "category": "Healthcare",
+      "idea": "Generative AI for breast cancer patients.",
+      "nearest_known_idea": "Generative AI for frontline worker hiring",
+      "similarity": 0.5264,
+      "word_count": 6
+    },
+    {
+      "category": "Industrials",
+      "idea": "Research lab for content marketing & seo.",
+      "nearest_known_idea": "A modern platform for content marketing & SEO.",
+      "similarity": 0.6074,
+      "word_count": 6
+    },
+    {
+      "category": "Industrials",
+      "idea": "General autonomy for fast moving hardware companies.",
+      "nearest_known_idea": "Advanced Contract MFG for fast moving hardware companies",
+      "similarity": 0.6284,
+      "word_count": 7
+    },
+    {
+      "category": "Industrials",
+      "idea": "Unified flight software and hardware for AI agents at work.",
+      "nearest_known_idea": "Unified flight software and hardware for the mission of tomorrow",
+      "similarity": 0.6184,
+      "word_count": 10
+    },
+    {
+      "category": "Industrials",
+      "idea": "The operating system for civilian infrastructure.",
+      "nearest_known_idea": "The operating system for the car wash industry.",
+      "similarity": 0.5757,
+      "word_count": 6
+    },
+    {
+      "category": "Industrials",
+      "idea": "Predictive explorer and driller for faster hardware.",
+      "nearest_known_idea": "Predictive Explorer and Driller for Critical Metal Deposits",
+      "similarity": 0.5815,
+      "word_count": 7
+    },
+    {
+      "category": "Industrials",
+      "idea": "Agent teams for critical metal deposits.",
+      "nearest_known_idea": "Predictive Explorer and Driller for Critical Metal Deposits",
+      "similarity": 0.502,
+      "word_count": 6
+    },
+    {
+      "category": "Industrials",
+      "idea": "Low-cost, high-scale ev charging platform for risk and quality.",
+      "nearest_known_idea": "Low-cost, high-scale EV charging platform for apartments (and more).",
+      "similarity": 0.6822,
+      "word_count": 9
+    },
+    {
+      "category": "Industrials",
+      "idea": "AI cad software for trains and heavy industry.",
+      "nearest_known_idea": "Predictive maintenance models for trains and heavy industry",
+      "similarity": 0.5519,
+      "word_count": 8
+    },
+    {
+      "category": "Other",
+      "idea": "AI-native planning & permitting software for affordable housing.",
+      "nearest_known_idea": "AI-native planning & permitting software for local gov",
+      "similarity": 0.6531,
+      "word_count": 7
+    },
+    {
+      "category": "Other",
+      "idea": "Non-profit building open-source voting machines for remote teams.",
+      "nearest_known_idea": "Non-profit building open-source voting machines for US elections.",
+      "similarity": 0.7047,
+      "word_count": 8
+    },
+    {
+      "category": "Other",
+      "idea": "10-minute delivery service for home services.",
+      "nearest_known_idea": "10-minute delivery service for college students.",
+      "similarity": 0.6668,
+      "word_count": 6
+    },
+    {
+      "category": "Other",
+      "idea": "AI-powered rental platform for AI apps and agents.",
+      "nearest_known_idea": "AI-Powered Rental Platform for Urban Renters",
+      "similarity": 0.6701,
+      "word_count": 8
+    },
+    {
+      "category": "Other",
+      "idea": "AI agents for curing inflammatory disorders.",
+      "nearest_known_idea": "A therapeutics platform for curing inflammatory disorders",
+      "similarity": 0.6396,
+      "word_count": 6
+    },
+    {
+      "category": "Other",
+      "idea": "AI customer support for chronic illness.",
+      "nearest_known_idea": "AI Health Assistant for Chronic Illness",
+      "similarity": 0.5467,
+      "word_count": 6
+    },
+    {
+      "category": "Other",
+      "idea": "AI compliance platform for businesses in latam.",
+      "nearest_known_idea": "All in one finance platform for borderless businesses in Africa",
+      "similarity": 0.5868,
+      "word_count": 7
+    },
+    {
+      "category": "Other",
+      "idea": "Get paid for education, insurance, and travel.",
+      "nearest_known_idea": "Outbound AI Agents for Education, Insurance, and Travel",
+      "similarity": 0.6492,
+      "word_count": 7
+    },
+    {
+      "category": "Real Estate and Construction",
+      "idea": "The AI drawing review platform for 1-12 month stays.",
+      "nearest_known_idea": "The AI drawing review platform for architects and engineers.",
+      "similarity": 0.5815,
+      "word_count": 9
+    },
+    {
+      "category": "Real Estate and Construction",
+      "idea": "AI workspace for engineering & environmental review.",
+      "nearest_known_idea": "AI Report Generation for Engineering & Environmental Review",
+      "similarity": 0.6653,
+      "word_count": 6
+    },
+    {
+      "category": "Real Estate and Construction",
+      "idea": "Building powerful data analysis software for cre investment teams.",
+      "nearest_known_idea": "Building powerful data analysis software for developing countries.",
+      "similarity": 0.6308,
+      "word_count": 9
+    },
+    {
+      "category": "Real Estate and Construction",
+      "idea": "The operating system for urban renters.",
+      "nearest_known_idea": "The AI operating system for restaurants",
+      "similarity": 0.6603,
+      "word_count": 6
+    },
+    {
+      "category": "Real Estate and Construction",
+      "idea": "A personal assistant for buying, selling and managing residential construction.",
+      "nearest_known_idea": "The platform for buying, selling and managing residential construction",
+      "similarity": 0.674,
+      "word_count": 10
+    },
+    {
+      "category": "Real Estate and Construction",
+      "idea": "AI technical support for the vacation rental industry.",
+      "nearest_known_idea": "The open platform for the vacation rental industry.",
+      "similarity": 0.5891,
+      "word_count": 8
+    },
+    {
+      "category": "Real Estate and Construction",
+      "idea": "AI copilot for cre investment teams.",
+      "nearest_known_idea": "The AI platform for CRE investment teams",
+      "similarity": 0.6341,
+      "word_count": 6
+    },
+    {
+      "category": "Real Estate and Construction",
+      "idea": "Data integration & insights for the construction industry.",
+      "nearest_known_idea": "Cloud solutions for the construction industry.",
+      "similarity": 0.6068,
+      "word_count": 7
+    }
+  ]
+}

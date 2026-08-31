@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-08-31T13:17:02.313723+00:00",
+  "source": "https://yc-oss.github.io/api/companies/all.json",
+  "source_records": 6196,
+  "usable_unique_ideas": 5411,
+  "rows_dropped_missing_company_or_idea": 164,
+  "rows_dropped_invalid_idea": 4,
+  "rows_dropped_truncated_idea": 579,
+  "rows_dropped_historical_status": 32,
+  "duplicate_ideas_removed": 6,
+  "industries": {
+    "B2B": 2837,
+    "Consumer": 668,
+    "Education": 101,
+    "Fintech": 594,
+    "Healthcare": 612,
+    "Industrials": 415,
+    "Other": 46,
+    "Real Estate and Construction": 138
+  }
+}
